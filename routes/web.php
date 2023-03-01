@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+use App\Http\Controllers\DicController;
+Route::controller(DicController::class)->prefix('dic')->group(function() {
+    Route::get('ad', 'add');
+    Route::get('disp', 'display');
+    Route::get('up', 'update');
+    Route::get('del', 'deletion');
+    
+    
+});
