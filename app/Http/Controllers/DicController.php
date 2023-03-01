@@ -7,29 +7,23 @@ use Illuminate\Http\Request;
 class DicController extends Controller
 {
     //
-    public function add()
+    public function ad()
     {
         return view('dic.add');
     }
     
-    public function display()
+    public function disp()
     {
         return view('dic.display');
     }
     
-    public function update()
+    public function up()
     {
         return view('dic.update');
     }
     
-    public function deletion()
+    public function del()
     {
         return view('dic.deletion');
     }
-    
-    
-    
-    
-    
-    
 }
