@@ -18,8 +18,10 @@ Route::get('/', function () {
 });
 
 use App\Http\Controllers\DicController;
-Route::controller(DicController::class)->prefix('dic')->group(function() {
+Route::controller(DicController::class)->prefix('dic')->name('dic.')->group(function() {
     Route::get('add', 'ad');
+    Route::post('add', 'create')->name('create');
+    
     Route::get('display', 'disp');
     Route::get('update', 'up');
     Route::get('deletion', 'del');
