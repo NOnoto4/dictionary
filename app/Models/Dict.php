@@ -14,4 +14,12 @@ class Dict extends Model
         'title' => 'required',
         'body' => 'required',
     );
+    
+    /**
+     * モデルに関連付けるテーブル
+     *
+     * @var string
+     */
+    protected $table = 'dictionary';
+    
 }
