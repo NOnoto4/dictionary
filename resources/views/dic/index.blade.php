@@ -47,6 +47,9 @@
                                         <div>
                                             <a href="{{ route('dic.edit', ['id' => $dictionary->id]) }}">編集</a>
                                         </div>
+                                        <div>
+                                            <a href="{{ route('dic.delete', ['id' => $dictionary->id]) }}">削除</a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

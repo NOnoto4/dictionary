@@ -24,6 +24,7 @@ Route::controller(DicController::class)->prefix('dic')->name('dic.')->group(func
     Route::get('/', 'index')->name('index');
     Route::get('edit', 'edit')->name('edit');
     Route::post('edit', 'update')->name('update');
+    Route::get('delete', 'delete')->name('delete');
     
 });
 Auth::routes();

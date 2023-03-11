@@ -22,7 +22,7 @@ class DicController extends Controller
         $dictionary = new Dict;
         $form = $request->all();
 
-        // フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
+        // フォームから画像が送信されてきたら、保存して、$dictionary->image_path に画像のパスを保存する
         if (isset($form['image'])) {
             $path = $request->file('image')->store('public/image');
             $dictionary->image_path = basename($path);
@@ -59,7 +59,7 @@ class DicController extends Controller
 
     public function edit(Request $request)
     {
-        // News Modelからデータを取得する
+        // Dict Modelからデータを取得する
         $dictionary = Dict::find($request->id);
         if (empty($dictionary)) {
             abort(404);
@@ -71,7 +71,7 @@ class DicController extends Controller
     {
         // Validationをかける
         $this->validate($request, Dict::$rules);
-        // News Modelからデータを取得する
+        // Dict Modelからデータを取得する
         $dictionary = Dict::find($request->id);
         // 送信されてきたフォームデータを格納する
         $dictionary_form = $request->all();
@@ -81,5 +81,16 @@ class DicController extends Controller
         $dictionary->fill($dictionary_form)->save();
 
         return redirect('dic');
+    }
+    
+    public function delete(Request $request)
+    {
+        // 該当するDict Modelを取得
+        $dictionary = Dict::find($request->id);
+
+        // 削除する
+        $dictionary->delete();
+
+        return redirect('dic/');
     }
 }
