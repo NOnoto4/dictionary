@@ -56,4 +56,15 @@ class DicController extends Controller
     {
         return view('dic.deletion');
     }
+    
+    public function ind(Request $request)
+    {
+        $cond_title = $request->cond_title;
+        if ($cond_title != '') {
+            $posts = Dict::where('title', $cond_title)->get();
+        } else {
+            $posts = Dict::all();
+        }
+        return view('dic.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
 }

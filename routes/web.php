@@ -25,7 +25,7 @@ Route::controller(DicController::class)->prefix('dic')->name('dic.')->group(func
     Route::get('display', 'disp');
     Route::get('update', 'up');
     Route::get('deletion', 'del');
-    
+    Route::get('index', 'ind');
     
 });
 Auth::routes();
