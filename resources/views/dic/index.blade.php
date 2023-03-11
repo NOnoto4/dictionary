@@ -8,7 +8,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <a href="{{ route('dic.ad') }}" role="button" class="btn btn-primary">新規作成</a>
+                <a href="{{ route('dic.add') }}" role="button" class="btn btn-primary">新規作成</a>
             </div>
             <div class="col-md-8">
                 <form action="{{ route('dic.index') }}" method="get">
@@ -34,6 +34,7 @@
                                 <th width="10%">ID</th>
                                 <th width="20%">タイトル</th>
                                 <th width="50%">本文</th>
+                                <th width="10%">操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -42,6 +43,11 @@
                                     <th>{{ $dictionary->id }}</th>
                                     <td>{{ Str::limit($dictionary->title, 100) }}</td>
                                     <td>{{ Str::limit($dictionary->body, 250) }}</td>
+                                    <td>
+                                        <div>
+                                            <a href="{{ route('dic.edit', ['id' => $dictionary->id]) }}">編集</a>
+                                        </div>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

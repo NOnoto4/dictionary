@@ -19,13 +19,11 @@ Route::get('/', function () {
 
 use App\Http\Controllers\DicController;
 Route::controller(DicController::class)->prefix('dic')->name('dic.')->group(function() {
-    Route::get('add', 'ad');
-    Route::post('add', 'create')->name('create');
-    
-    Route::get('display', 'disp');
-    Route::get('update', 'up');
-    Route::get('deletion', 'del');
-    Route::get('index', 'ind');
+    Route::get("create", 'add')->name('add');
+    Route::post('create', 'create')->name('create');
+    Route::get('/', 'index')->name('index');
+    Route::get('edit', 'edit')->name('edit');
+    Route::post('edit', 'update')->name('update');
     
 });
 Auth::routes();
