@@ -7,6 +7,6 @@
             <h2>{{ $dictionary_form->title }}</h2>
         </div>    
         <div class="row">   
-            <p>{{ $dictionary_form->body}}</p>
+            <p>{!! $dictionary_form->body !!}</p>
         </div
 @endsection

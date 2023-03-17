@@ -39,7 +39,7 @@ class DicController extends Controller
         $dictionary->fill($form);
         $dictionary->save();
 
-        return redirect('dic/create');
+        return redirect('dic');
     }
 
     public function index(Request $request)
@@ -99,6 +99,16 @@ class DicController extends Controller
         $dictionary = Dict::find($request->id);
         if (empty($dictionary)) {
             abort(404);
+        }
+        
+        // 辞書を全て取ってくる
+        $all = Dict::all();
+        foreach ($all as $dict) {
+            // 本文にワード（タイトル）が含まれていた場合
+            if (mb_strpos($dictionary->body, $dict->title) !== false) {
+                // ワード（タイトル）部分をリンク付きに置換する
+                $dictionary->body = mb_ereg_replace($dict->title, "<a href='#'>".$dict->title."</a>", $dictionary->body);
+            }
         }
         return view('dic.show', ['dictionary_form' => $dictionary]);
     }
