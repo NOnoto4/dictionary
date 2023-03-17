@@ -55,7 +55,6 @@ class DicController extends Controller
         return view('dic.index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
 
-    // 以下を追記
 
     public function edit(Request $request)
     {
@@ -92,5 +91,15 @@ class DicController extends Controller
         $dictionary->delete();
 
         return redirect('dic/');
+    }
+    
+    public function show(Request $request)
+    {
+        // Dict Modelからデータを取得する
+        $dictionary = Dict::find($request->id);
+        if (empty($dictionary)) {
+            abort(404);
+        }
+        return view('dic.show', ['dictionary_form' => $dictionary]);
     }
 }

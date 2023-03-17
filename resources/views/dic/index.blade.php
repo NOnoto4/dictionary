@@ -41,7 +41,9 @@
                             @foreach($posts as $dictionary)
                                 <tr>
                                     <th>{{ $dictionary->id }}</th>
-                                    <td>{{ Str::limit($dictionary->title, 100) }}</td>
+                                    <td>
+                                        <a href="{{ route('dic.show', ['id' => $dictionary->id]) }}">{{ Str::limit($dictionary->title, 100) }}</a>
+                                    </td>
                                     <td>{{ Str::limit($dictionary->body, 250) }}</td>
                                     <td>
                                         <div>
